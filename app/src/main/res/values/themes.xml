@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PronuncIA" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.PronuncIA" parent="Base.Theme.PronuncIA" />
+
+    <style name="RoundedTopLinearLayout">
+        <item name="shapeAppearanceOverlay">@style/RoundedTopShapeAppearance</item>
+    </style>
+
+    <style name="RoundedTopShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">70dp</item>
+        <item name="cornerSizeTopRight">700dp</item>
+    </style>
+
+</resources>

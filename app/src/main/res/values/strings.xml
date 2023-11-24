@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PronuncIA</string>
+    <string name="invalid_password">Contraseña invalida</string>
+    <string name="invalid_email">Email invalida</string>
+    <string name="hola_mundo">Hola Mundo!</string>
+    <string name="register">Register</string>
+    <string name="email">EMAIL</string>
+    <string name="password">Password</string>
+    <string name="sing_up">SING UP</string>
+    <string name="ya_tengo_una_cuenta">Ya tengo una cuenta </string>
+    <string name="sing_in">SING IN</string>
+    <string name="sing_in2"> Sing In</string>
+    <string name="sing_uo2"> Sing Up</string>
+    <string name="log_in">Log in!</string>
+    <string name="default_notification_channel_id" />
+    <string name="account">Account</string>
+</resources>

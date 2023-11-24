@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/verde" /> <!-- Color de fondo -->
+            <corners android:topLeftRadius="60dp" android:topRightRadius="60dp" android:bottomLeftRadius="0dp" android:bottomRightRadius="0dp" /> <!-- Esquinas redondeadas solo en la parte inferior -->
+        </shape>
+    </item>
+
+</layer-list>
