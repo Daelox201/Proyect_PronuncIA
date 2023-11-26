@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
@@ -153,9 +154,11 @@ public class Principal_Page extends AppCompatActivity {
         if (isUser) {
             textView.setBackgroundResource(R.drawable.user_message_background);
             textView.setGravity(Gravity.END);
+            textView.setTextColor(Color.WHITE);
         } else {
             textView.setBackgroundResource(R.drawable.bot_message_background);
             textView.setGravity(Gravity.START);
+            textView.setTextColor(Color.WHITE);
         }
 
         textView.setLayoutParams(params);
