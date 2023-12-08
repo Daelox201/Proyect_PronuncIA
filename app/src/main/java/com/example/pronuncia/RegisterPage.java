@@ -18,14 +18,12 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterPage extends AppCompatActivity {
+
     private TextView singIn;
     private FirebaseAuth firebaseAuth;
     private EditText edtEmail, edtPassword;
     private Button btnSignUp;
 
-
-
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +38,17 @@ public class RegisterPage extends AppCompatActivity {
         btnSignUp.setOnClickListener(view -> registerUser());
 
         singIn.setOnClickListener(view -> cargarLogin());
+
+        // Llamamos al método para ejecutar las pruebas
+        runRegistrationTests();
     }
 
-    private void cargarLogin(){
-        Intent i = new Intent(RegisterPage.this,MainActivity.class);
+    private void cargarLogin() {
+        Intent i = new Intent(RegisterPage.this, MainActivity.class);
         startActivity(i);
         finish();
     }
+
     private void registerUser() {
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
@@ -61,7 +63,7 @@ public class RegisterPage extends AppCompatActivity {
             return;
         }
 
-        checkIfEmailExists(email,password);
+        checkIfEmailExists(email, password);
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -107,7 +109,7 @@ public class RegisterPage extends AppCompatActivity {
         }
     }
 
-    private void checkIfEmailExists(String email,String password) {
+    private void checkIfEmailExists(String email, String password) {
         firebaseAuth.fetchSignInMethodsForEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -129,7 +131,6 @@ public class RegisterPage extends AppCompatActivity {
                 });
     }
 
-
     private boolean isStrongPassword(String password) {
         // Definir los criterios para una contraseña segura
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_])(?=\\S+$).{8,}$";
@@ -143,4 +144,31 @@ public class RegisterPage extends AppCompatActivity {
             return false;
         }
     }
+
+    private void runRegistrationTests() {
+        // Prueba 1: Registro exitoso con credenciales válidas
+        testRegistration("correo@ejemplo.com", "ContraseñaSegura123");
+
+        // Prueba 2: Registro fallido con correo electrónico inválido
+        testRegistration("correo_invalido", "ContraseñaSegura123");
+
+        // Prueba 3: Registro fallido con contraseña débil
+        testRegistration("correo@ejemplo.com", "123");
+
+        // ... (puedes agregar más pruebas aquí con distintos escenarios)
+    }
+
+    private void testRegistration(String email, String password) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Registro exitoso
+                        sendEmailVerification();
+                    } else {
+                        // Manejar registro fallido
+                        handleRegistrationFailure(task);
+                    }
+                });
+    }
 }
+
